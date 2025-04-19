@@ -377,3 +377,4 @@ Environment.props
 # Exclude common build output folder
 BuildOutput/
 temp/
+**/Package/README.md
