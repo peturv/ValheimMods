@@ -1,0 +1,7 @@
+{
+    "name": "SleepWell",
+    "version_number": "1.0.0",
+    "website_url": "",
+    "description": "Changes the sleep prompt to ZZZzzz...",
+    "dependencies": []
+}
