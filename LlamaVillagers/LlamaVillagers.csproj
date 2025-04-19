@@ -2,5 +2,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AssemblyName>LlamaVillagers</AssemblyName>
+    <IsJotunnProject>true</IsJotunnProject>
   </PropertyGroup>
 </Project>

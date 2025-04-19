@@ -1,7 +1,9 @@
 {
-    "name": "SleepWell",
-    "version_number": "1.0.0",
-    "website_url": "",
-    "description": "Changes the sleep prompt to ZZZzzz...",
-    "dependencies": []
+  "name": "SleepWell",
+  "description": "Changes the sleep prompt to ZZZzzz...",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/peturv/ValheimMods/SleepWell",
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.2202"
+  ]
 }

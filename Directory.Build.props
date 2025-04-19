@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project  ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(AssemblyName)' != 'MetadataCreator'">
     <OutputType>Library</OutputType>
     <TargetFramework>net48</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -14,7 +14,7 @@
     <BaseOutputPath>$(SolutionDir)BuildOutput\</BaseOutputPath>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug' and '$(AssemblyName)' != 'MetadataCreator'">
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <Optimize>false</Optimize>
     <DebugSymbols>true</DebugSymbols>
@@ -24,7 +24,7 @@
     <OutputPath>$(BaseOutputPath)Debug\</OutputPath>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' and '$(AssemblyName)' != 'MetadataCreator'">
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <WarningLevel>4</WarningLevel>
@@ -32,7 +32,7 @@
     <OutputPath>$(BaseOutputPath)Release\</OutputPath>
   </PropertyGroup>
   
-  <ItemGroup>
+  <ItemGroup Condition="'$(AssemblyName)' != 'MetadataCreator'">
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,13 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   
-	<ItemGroup>
+	<ItemGroup Condition="'$(AssemblyName)' != 'MetadataCreator'">
 		<None Include="app.config" />
-		<None Include="packages.config" />
 		<None Include="README.md" />
 	</ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="JotunnLib" Version="2.24.3" />
-	</ItemGroup>
+  
 </Project>

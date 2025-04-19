@@ -1,8 +1,8 @@
-﻿{
+{
   "name": "LlamaVillagers",
-  "description": "",
   "version_number": "0.0.1",
-  "website_url": "",
+  "website_url": "https://github.com/peturv/ValheimMods/LlamaVillagers",
+  "description": "Living NPC:s",
   "dependencies": [
     "denikson-BepInExPack_Valheim-5.4.2202",
     "ValheimModding-Jotunn-2.24.3"

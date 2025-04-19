@@ -1,10 +1,22 @@
 <Project>
-  <PropertyGroup>
+  <PropertyGroup Condition="'$(AssemblyName)' != 'MetadataCreator'">
     <VALHEIM_MANAGED>$(VALHEIM_INSTALL)/valheim_Data/Managed</VALHEIM_MANAGED>
     <UNITY_FOLDER Condition="'$(UNITY_FOLDER)' == ''">$(SolutionDir)$(AssemblyName)Unity</UNITY_FOLDER>
   </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(AssemblyName)' != 'MetadataCreator'">
+    <METADATA_CREATOR>$(BaseOutputPath.TrimEnd('\'))\$(Configuration)\net8.0\MetadataCreator.dll</METADATA_CREATOR>
+  </PropertyGroup>
+  
+  <ItemGroup Condition="$(IsJotunnProject) == true and '$(AssemblyName)' != 'MetadataCreator'">
+    <PackageReference Include="JotunnLib" Version="2.24.3" />
+  </ItemGroup>
+    
+  <ItemGroup Condition="$(IsJotunnProject) != true">
+    <PackageReference Include="JotunnLib" Version="2.24.3" PrivateAssets="all" />
+  </ItemGroup>
 
-  <Target Name="CopyToUnity">
+  <Target Name="CopyToUnity" Condition="'$(AssemblyName)' != 'MetadataCreator'">
     <Message Text="Copy assemblies to Unity" Importance="high" />
     <Copy SourceFiles="$(VALHEIM_INSTALL)/BepInEx/core/BepInEx.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
     <Copy SourceFiles="$(VALHEIM_INSTALL)/BepInEx/core/0Harmony.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
@@ -33,10 +45,16 @@
     <Copy SourceFiles="$(VALHEIM_MANAGED)/SoftReferenceableAssets.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
   </Target>
 
-  <Target Name="JotunnPostBuildTask" AfterTargets="Build">
+  <Target Name="JotunnPostBuildTask" AfterTargets="Build" Condition="'$(AssemblyName)' != 'MetadataCreator'">
     <CallTarget Targets="CopyToUnity" Condition="Exists('$(UNITY_FOLDER)')" />
   </Target>
-  <Target Name="JotunnPostBuildTaskWin" AfterTargets="Build" Condition=" '$(OS)' == 'Windows_NT' ">
+  
+  <Target Name="GenerateJsonMetadata" BeforeTargets="JotunnPostBuildTaskWin" Condition="'$(AssemblyName)' != 'MetadataCreator'">
+    <Exec Command="dotnet &quot;$(METADATA_CREATOR)&quot; &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(ProjectDir.TrimEnd('\').TrimEnd('/'))\Package&quot;" />
+  </Target>
+  
+  <Target Name="JotunnPostBuildTaskWin" AfterTargets="Build" Condition=" '$(OS)' == 'Windows_NT' and '$(AssemblyName)' != 'MetadataCreator'">
     <Exec Command="powershell.exe -ExecutionPolicy RemoteSigned -File &quot;$(SolutionDir)publish.ps1&quot; -Target &quot;$(ConfigurationName)&quot; -TargetPath &quot;$(TargetDir.TrimEnd('\'))&quot; -TargetAssembly &quot;$(TargetFileName)&quot; -ValheimPath &quot;$(VALHEIM_INSTALL.TrimEnd('\'))&quot; -DeployPath &quot;$(MOD_DEPLOYPATH.TrimEnd('\'))&quot; -ProjectPath &quot;$(ProjectDir.TrimEnd('\'))&quot; " />
   </Target>
+  
 </Project>

@@ -4,8 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LlamaVillagers", "LlamaVillagers\LlamaVillagers.csproj", "{DEAF4438-8089-40ED-8175-398E1261D45B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E9E58267-4A06-4FDF-9FEB-432159B749A0} = {E9E58267-4A06-4FDF-9FEB-432159B749A0}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepWell", "SleepWell\SleepWell.csproj", "{05D75C9F-DF09-8862-E35B-8D13FD6A60C3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E9E58267-4A06-4FDF-9FEB-432159B749A0} = {E9E58267-4A06-4FDF-9FEB-432159B749A0}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
 	ProjectSection(SolutionItems) = preProject
@@ -13,12 +19,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		Directory.Build.props = Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
+		Environment.props = Environment.props
 		LICENSE = LICENSE
 		publish.ps1 = publish.ps1
 		publish_debug.sh = publish_debug.sh
 		publish_release.sh = publish_release.sh
 		README.MD = README.MD
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheezus", "Cheezus\Cheezus.csproj", "{2B8B3E7F-0F04-F458-8A5B-F83FAB66655B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E9E58267-4A06-4FDF-9FEB-432159B749A0} = {E9E58267-4A06-4FDF-9FEB-432159B749A0}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetadataCreator", "MetadataCreator\MetadataCreator.csproj", "{E9E58267-4A06-4FDF-9FEB-432159B749A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +48,14 @@ Global
 		{05D75C9F-DF09-8862-E35B-8D13FD6A60C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05D75C9F-DF09-8862-E35B-8D13FD6A60C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05D75C9F-DF09-8862-E35B-8D13FD6A60C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B8B3E7F-0F04-F458-8A5B-F83FAB66655B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B8B3E7F-0F04-F458-8A5B-F83FAB66655B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B8B3E7F-0F04-F458-8A5B-F83FAB66655B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B8B3E7F-0F04-F458-8A5B-F83FAB66655B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9E58267-4A06-4FDF-9FEB-432159B749A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9E58267-4A06-4FDF-9FEB-432159B749A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9E58267-4A06-4FDF-9FEB-432159B749A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9E58267-4A06-4FDF-9FEB-432159B749A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
