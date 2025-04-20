@@ -4,6 +4,7 @@
   "website_url": "https://github.com/peturv/ValheimMods/Cheezus",
   "description": "Much needed wheel of cheese",
   "dependencies": [
-    "denikson-BepInExPack_Valheim-5.4.2202"
+    "denikson-BepInExPack_Valheim-5.4.2202",
+    "ValheimModding-Jotunn-2.24.3"
   ]
 }
