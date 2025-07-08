@@ -6,8 +6,9 @@ It is designed to be easy to use and lightweight.
 ## Quickstart
 1. Download & extract.
 2. Put files from ./scripts into `~/Library/Application Support/Steam/steamapps/common/Valheim` or wherever you have valheim.app and the BepInEx folder.
-3. Run the `valheim_modmanager.command` file by double-clicking. See [macOS complains about the script being from an unidentified developer].
-4. Follow the prompts.
+3. Change permissions for the command file `chmod +x ~/Library/Application Support/Steam/steamapps/common/Valheim/valheim_modmanager.command"` in the console
+4. Run the `valheim_modmanager.command` file by double-clicking. See [macOS complains about the script being from an unidentified developer].
+5. Follow the prompts.
 
 ## Background
 
