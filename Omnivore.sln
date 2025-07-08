@@ -34,6 +34,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheezus", "Cheezus\Cheezus.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetadataCreator", "MetadataCreator\MetadataCreator.csproj", "{E9E58267-4A06-4FDF-9FEB-432159B749A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmnivoreCommon", "OmnivoreCommon\OmnivoreCommon.csproj", "{8A67F20A-80A3-4F9F-853F-EF9E2109D409}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OsxModManager", "OsxModManager", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		OsxModManager\manifest.json = OsxModManager\manifest.json
+		OsxModManager\README.md = OsxModManager\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{E6DAB85A-B586-4A37-9D8A-51A51CA9085E}"
+	ProjectSection(SolutionItems) = preProject
+		OsxModManager\scripts\mod_manager.sh = OsxModManager\scripts\mod_manager.sh
+		OsxModManager\scripts\valheim_modmanager.command = OsxModManager\scripts\valheim_modmanager.command
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,9 +70,16 @@ Global
 		{E9E58267-4A06-4FDF-9FEB-432159B749A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9E58267-4A06-4FDF-9FEB-432159B749A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9E58267-4A06-4FDF-9FEB-432159B749A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A67F20A-80A3-4F9F-853F-EF9E2109D409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A67F20A-80A3-4F9F-853F-EF9E2109D409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A67F20A-80A3-4F9F-853F-EF9E2109D409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A67F20A-80A3-4F9F-853F-EF9E2109D409}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E6DAB85A-B586-4A37-9D8A-51A51CA9085E} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {04FA40AF-91D5-4CE8-92ED-7530C8DF0D5E}

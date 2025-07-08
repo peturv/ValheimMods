@@ -19,7 +19,7 @@ namespace Cheezus {
   [BepInDependency(Jotunn.Main.ModGuid)]
   public class Cheezus : BaseUnityPlugin {
 
-    private CustomLocalization Localization;
+    private CustomLocalization? Localization;
 
     private void Awake() {
       Jotunn.Logger.LogInfo($"{PluginInfo.PluginName} v{PluginInfo.PluginVersion} has spread it's aroma.");

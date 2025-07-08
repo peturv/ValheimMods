@@ -45,15 +45,15 @@
     <Copy SourceFiles="$(VALHEIM_MANAGED)/SoftReferenceableAssets.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
   </Target>
 
-  <Target Name="JotunnPostBuildTask" AfterTargets="Build" Condition="'$(AssemblyName)' != 'MetadataCreator'">
+  <Target Name="JotunnPostBuildTask" AfterTargets="Build" Condition="'$(AssemblyName)' != 'MetadataCreator' and '$(AssemblyName)' != 'OmnivoreCommon'">
     <CallTarget Targets="CopyToUnity" Condition="Exists('$(UNITY_FOLDER)')" />
   </Target>
   
-  <Target Name="GenerateJsonMetadata" BeforeTargets="JotunnPostBuildTaskWin" Condition="'$(AssemblyName)' != 'MetadataCreator'">
+  <Target Name="GenerateJsonMetadata" BeforeTargets="JotunnPostBuildTaskWin" Condition="'$(AssemblyName)' != 'MetadataCreator' and '$(AssemblyName)' != 'OmnivoreCommon'">
     <Exec Command="dotnet &quot;$(METADATA_CREATOR)&quot; &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(ProjectDir.TrimEnd('\').TrimEnd('/'))\Package&quot;" />
   </Target>
   
-  <Target Name="JotunnPostBuildTaskWin" AfterTargets="Build" Condition=" '$(OS)' == 'Windows_NT' and '$(AssemblyName)' != 'MetadataCreator'">
+  <Target Name="JotunnPostBuildTaskWin" AfterTargets="Build" Condition=" '$(OS)' == 'Windows_NT' and '$(AssemblyName)' != 'MetadataCreator' and '$(AssemblyName)' != 'OmnivoreCommon'">
     <Exec Command="powershell.exe -ExecutionPolicy RemoteSigned -File &quot;$(SolutionDir)publish.ps1&quot; -Target &quot;$(ConfigurationName)&quot; -TargetPath &quot;$(TargetDir.TrimEnd('\'))&quot; -TargetAssembly &quot;$(TargetFileName)&quot; -ValheimPath &quot;$(VALHEIM_INSTALL.TrimEnd('\'))&quot; -DeployPath &quot;$(MOD_DEPLOYPATH.TrimEnd('\'))&quot; -ProjectPath &quot;$(ProjectDir.TrimEnd('\'))&quot; " />
   </Target>
   

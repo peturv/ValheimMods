@@ -1,0 +1,7 @@
+{
+    "name": "OmnivoreModManager",
+    "version_number": "0.9.0",
+    "website_url": "https://github.com/peturv/ValheimMods/tree/main/OsxModManager",
+    "description": "Simple console based mod-manager for macos",
+    "dependencies": []
+}

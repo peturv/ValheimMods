@@ -3,6 +3,20 @@
 This solution and projects are based on the Valheim mod stub project from [Jötunn](https://github.com/Valheim-Modding/Jotunn) 
 Please see [Jötunn Docs](https://valheim-modding.github.io/Jotunn/guides/overview.html) detailed documentation and setup.
 
+## State of sub-projects
+
+### Working
+* SleepWell
+* OsxModManager (Not a C# project, it just lives here as well. Needs manual packaging)
+* MetadataCreator (Supporting project)
+* OmnivoreCommon (Supporting project)
+
+### Development
+* Cheezus
+
+### Early experimental stage
+* LlamaVillagers
+
 ### Post Build automations
 
 Included in this repo is a PowerShell script `publish.ps1`.
@@ -38,3 +52,14 @@ When Valheim updates it is likely that parts of the assembly files change. If th
 1. Copy all `assembly_*.dll` from `<ValheimDir>\valheim_Data\Managed` into `<JotunnModStub>\JotunnModUnity\Assets\Assemblies`. <br />
   **Do this directly in the filesystem - don't import the dlls in Unity**.
 2. Go to Unity Editor and press `Ctrl+R`. This reloads all files from the filesystem and "re-imports" the copied dlls into the project.
+
+### Deploy to plugin folder
+To deploy output to local valheim for testing and debugging, add an Environment.props file into the root of the project with the following content:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MOD_DEPLOYPATH>C:\PATH\TO\BepInEx\plugins</MOD_DEPLOYPATH>
+  </PropertyGroup>
+</Project>
+````

@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   
-	<ItemGroup Condition="'$(AssemblyName)' != 'MetadataCreator'">
+	<ItemGroup Condition="'$(AssemblyName)' != 'MetadataCreator' and '$(AssemblyName)' != 'OmnivoreCommon'">
 		<None Include="app.config" />
 		<None Include="README.md" />
 	</ItemGroup>
