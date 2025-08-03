@@ -44,8 +44,9 @@ To run the script, you need the following installed and available on the command
 * curl
 * jq
 * bash version 4.0 or later (The default bash on macOS is v3.5, so you will need to install a newer version)
+* coreutils
 
-The easiest way to ensure this is to install [Homebrew](https://brew.sh/) and then run: `brew install curl jq bash`
+The easiest way to ensure this is to install [Homebrew](https://brew.sh/) and then run: `brew install curl jq bash coreutils`
 Note that bash will not overwrite the default macos version. I'm writing this from my windows computer and can't 
 remeber exactly where the default bash is located (`/bin/bash` or similar), the new one will be installed under `/opt/homebrew/bin`.
 
@@ -81,8 +82,10 @@ The selection is saved between runs.
 
 You can also press `p` or `enter` to start the game (with or without modpack), or `q` to exit the script.
 
-When installing a modpack, you will be prompted to enter the URL of the modpack on thunderstore.io. This is in the format https://thunderstore.io/c/valheim/p/Suudo/SweetAroma/
-You can also point to a local file that conforms to the manifest.json format.
+When installing a modpack, you can:
+- Enter a Thunderstore URL (e.g., https://thunderstore.io/c/valheim/p/Suudo/SweetAroma/).
+- Enter a local path to manifest.json (e.g., folder1/folder2/manifest.json).
+- Drag and drop the manifest.json file into the Terminal window.
 
 When installing client mods, you will be prompted to enter the dependency string of the mod on thunderstore.io, with or without a version number. 
 For example `oathorse-TubaWalk-0.1.3` or `oathorse-TubaWalk` (a mod which should be part of the actual game btw.)
