@@ -1,0 +1,57 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Build Debug",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "dotnet build Omnivore.sln --configuration Debug",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Build Release",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "dotnet build Omnivore.sln --configuration Release",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Clean Solution",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "dotnet clean Omnivore.sln",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Deploy Cheezus Debug",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "powershell.exe -ExecutionPolicy RemoteSigned -File publish.ps1 -Target Debug -TargetPath 'BuildOutput\\Debug\\net48' -TargetAssembly 'Cheezus.dll' -ValheimPath 'C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim' -DeployPath 'D:\\Games\\ThunderstoreData\\Valheim\\profiles\\Development\\BepInEx\\plugins' -ProjectPath 'Cheezus'",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Deploy LlamaVillagers Debug",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "powershell.exe -ExecutionPolicy RemoteSigned -File publish.ps1 -Target Debug -TargetPath 'BuildOutput\\Debug\\net48' -TargetAssembly 'LlamaVillagers.dll' -ValheimPath 'C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim' -DeployPath 'D:\\Games\\ThunderstoreData\\Valheim\\profiles\\Development\\BepInEx\\plugins' -ProjectPath 'LlamaVillagers'",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Deploy SleepWell Debug",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "powershell.exe -ExecutionPolicy RemoteSigned -File publish.ps1 -Target Debug -TargetPath 'BuildOutput\\Debug\\net48' -TargetAssembly 'SleepWell.dll' -ValheimPath 'C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim' -DeployPath 'D:\\Games\\ThunderstoreData\\Valheim\\profiles\\Development\\BepInEx\\plugins' -ProjectPath 'SleepWell'",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+
+    ]
+}

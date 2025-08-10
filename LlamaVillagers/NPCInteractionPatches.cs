@@ -1,0 +1,101 @@
+using HarmonyLib;
+using Jotunn;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using UnityEngine;
+
+namespace LlamaVillagers
+{
+    [HarmonyPatch]
+    public static class NPCInteractionPatches
+    {
+        // Patch the NPC interaction system - using a simpler approach
+        [HarmonyPatch(typeof(Talker), "Interact")]
+        [HarmonyPostfix]
+        public static void OnNPCInteraction(Talker __instance, Humanoid user, bool hold, bool alt)
+        {
+            if (hold || alt) return;
+            
+            var npcName = __instance.name;
+            if (string.IsNullOrEmpty(npcName)) return;
+            
+            // Check if this is an NPC we want to interact with
+            if (LlamaVillagers._npcPersonalities.ContainsKey(npcName))
+            {
+                // Generate a greeting or response
+                _ = Task.Run(async () =>
+                {
+                    var response = await LlamaVillagers.GenerateDialogue(npcName, "Hello");
+                    if (!string.IsNullOrEmpty(response))
+                    {
+                        // Share with nearby players
+                        LlamaVillagers.ShareDialogueWithNearbyPlayers(npcName, response, __instance.transform.position);
+                        
+                        // Add to chat
+                        AddToChat($"{npcName}: {response}");
+                    }
+                });
+            }
+        }
+        
+        // Patch chat system to handle NPC dialogue
+        [HarmonyPatch(typeof(Chat), "OnNewChatMessage")]
+        [HarmonyPostfix]
+        public static void OnChatMessage(Chat __instance, string user, string text)
+        {
+            // Check if the message is directed at an NPC
+            foreach (var npcName in LlamaVillagers._npcPersonalities.Keys)
+            {
+                if (text.Contains(npcName) || text.StartsWith($"/{npcName}"))
+                {
+                    var cleanText = text.Replace($"/{npcName}", "").Trim();
+                    if (string.IsNullOrEmpty(cleanText)) continue;
+                    
+                    // Generate NPC response
+                    _ = Task.Run(async () =>
+                    {
+                        var response = await LlamaVillagers.GenerateDialogue(npcName, cleanText);
+                        if (!string.IsNullOrEmpty(response))
+                        {
+                            // Add NPC response to chat
+                            AddToChat($"{npcName}: {response}");
+                        }
+                    });
+                    break;
+                }
+            }
+        }
+        
+        // Helper method to add messages to chat
+        private static void AddToChat(string message)
+        {
+            if (Chat.instance != null)
+            {
+                Chat.instance.AddString(message);
+            }
+        }
+        
+        // Patch to add NPC interaction UI
+        [HarmonyPatch(typeof(Hud), "UpdateCrosshair")]
+        [HarmonyPostfix]
+        public static void UpdateCrosshair(Hud __instance)
+        {
+            var player = Player.m_localPlayer;
+            if (player == null) return;
+            
+            var hoverObject = player.GetHoverObject();
+            if (hoverObject == null) return;
+            
+            var talker = hoverObject.GetComponent<Talker>();
+            if (talker != null)
+            {
+                var npcName = talker.name;
+                if (LlamaVillagers._npcPersonalities.ContainsKey(npcName))
+                {
+                    // Show interaction hint
+                    __instance.m_hoverName.text = $"{npcName} (Press E to chat)";
+                }
+            }
+        }
+    }
+}

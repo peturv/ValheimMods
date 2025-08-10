@@ -4,9 +4,28 @@
     <AssemblyName>LlamaVillagers</AssemblyName>
     <IsJotunnProject>true</IsJotunnProject>
   </PropertyGroup>
+  
   <ItemGroup>
-    <PackageReference Include="LLamaSharp" Version="0.23.0" />
-    <PackageReference Include="LLamaSharp.Backend.Cpu" Version="0.23.0" />
-    <PackageReference Include="LLamaSharp.Backend.Cuda12" Version="0.23.0" />
+    <PackageReference Include="LLamaSharp" Version="0.24.0" />
+    <PackageReference Include="LLamaSharp.Backend.Cpu" Version="0.24.0" />
+    <PackageReference Include="LLamaSharp.Backend.Cuda12" Version="0.24.0" />
+    <PackageReference Include="LLamaSharp.Backend.Cuda11" Version="0.24.0" />
   </ItemGroup>
+  
+  <!-- Direct references for IDE support -
+  <ItemGroup>
+    <Reference Include="BepInEx">
+      <HintPath>D:\Games\ThunderstoreData\Valheim\profiles\Development\BepInEx\core\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>D:\Games\ThunderstoreData\Valheim\profiles\Development\BepInEx\core\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Valheim\valheim_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Valheim\valheim_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  -->
 </Project>

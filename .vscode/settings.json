@@ -1,0 +1,10 @@
+{
+    "dotnet.defaultSolution": "Omnivore.sln",
+    "omnisharp.useModernNet": true,
+    "csharp.semanticHighlighting.enabled": true,
+    "files.associations": {
+        "*.cs": "csharp",
+        "*.unity": "yaml",
+        "*.prefab": "yaml"
+    }
+}
