@@ -342,8 +342,7 @@ get_modpack_by_number() {
 }
 
 add_modpack_from_url_or_local() {
-    read -rp "Enter URL or local path to manifest.json: " input
-
+    read -rp "Enter URL or local path to manifest.json (or drag file onto Terminal): " input
     if [[ -z "$input" ]]; then
         echo "❌ No input entered."
         return
@@ -352,6 +351,15 @@ add_modpack_from_url_or_local() {
     local manifest_content=""
     local is_api_manifest=0
 
+    # Normalize the input path (handle escaped spaces, resolve relative paths)
+    if [[ ! "$input" =~ ^https?:// ]] && [[ ! "$input" =~ ^/ ]]; then
+        # Relative path: resolve relative to SCRIPT_ROOT
+        input="$SCRIPT_ROOT/$input"
+    fi
+    # Convert escaped spaces (\ ) to regular spaces and resolve to absolute path
+    input=$(echo "$input" | sed 's/\\ / /g')
+    input=$(realpath "$input" 2>/dev/null || echo "$input")
+
     if [[ -f "$input" ]]; then
         # Local file path
         manifest_content=$(cat "$input")
@@ -359,11 +367,11 @@ add_modpack_from_url_or_local() {
         # URL
         local url=$input
         if [[ "$url" =~ /p/([^/]+)/([^/]+)/?$ ]]; then
-          author="${BASH_REMATCH[1]}"
-          modname="${BASH_REMATCH[2]}"
+            author="${BASH_REMATCH[1]}"
+            modname="${BASH_REMATCH[2]}"
         else
-          echo "❌ Invalid Thunderstore URL format."
-          return
+            echo "❌ Invalid Thunderstore URL format."
+            return
         fi
         api_url="https://thunderstore.io/api/experimental/package/${author}/${modname}/"
         if ! manifest_content=$(curl -fsSL "$api_url"); then
@@ -372,7 +380,7 @@ add_modpack_from_url_or_local() {
         fi
         is_api_manifest=1
     else
-        echo "❌ Input is neither a file nor a valid URL."
+        echo "❌ Input is neither a valid file nor a URL: $input"
         return
     fi
 
