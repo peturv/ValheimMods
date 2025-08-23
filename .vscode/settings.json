@@ -5,5 +5,40 @@
         "*.cs": "csharp",
         "*.unity": "yaml",
         "*.prefab": "yaml"
+    },
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.defaultFormatter": "ms-dotnettools.csharp",
+    "omnisharp.enableEditorConfigSupport": true,
+    "omnisharp.enableRoslynAnalyzers": true,
+    "editor.indentSize": 2,
+    "editor.tabSize": 2,
+    "csharp.format.enable": true,
+    "[csharp]": {
+        "editor.defaultFormatter": "anysphere.csharp",
+        "editor.defaultFormatterOptions": {
+            "csharp": {
+                "enableAnalyzersSupport": true,
+                "newLineBeforeOpenBrace": "none",
+                "newLineBeforeElse": false,
+                "newLineBeforeCatch": false,
+                "newLineBeforeFinally": false,
+                "newLineBeforeMembersInObjectInitializers": false,
+                "newLineBeforeMembersInAnonymousTypes": false,
+                "spaceAfterCast": false,
+                "spaceAfterKeywordsInControlFlowStatements": true,
+                "spaceBetweenMethodCallParameterListParentheses": false,
+                "spaceBetweenMethodDeclarationParameterListParentheses": false,
+                "spaceBetweenParentheses": false,
+                "spaceBeforeColonInInheritanceClause": true,
+                "spaceAfterColonInInheritanceClause": true,
+                "spaceAroundBinaryOperators": "beforeAndAfter",
+                "spaceBetweenMethodDeclarationEmptyParameterListParentheses": false,
+                "spaceBetweenMethodCallNameAndOpeningParenthesis": false,
+                "spaceBetweenMethodCallEmptyParameterListParentheses": false,
+                "preserveSingleLineStatements": true,
+                "preserveSingleLineBlocks": true,
+            }
+        }
     }
 }

@@ -1,8 +1,4 @@
 <Project>
-  <PropertyGroup>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
-  </PropertyGroup>
   
   <PropertyGroup Condition="'$(AssemblyName)' != 'MetadataCreator'">
     <VALHEIM_MANAGED>$(VALHEIM_INSTALL)/valheim_Data/Managed</VALHEIM_MANAGED>
@@ -10,15 +6,15 @@
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(AssemblyName)' != 'MetadataCreator'">
-    <METADATA_CREATOR>$(BaseOutputPath.TrimEnd('\'))\$(Configuration)\net8.0\MetadataCreator.dll</METADATA_CREATOR>
+    <METADATA_CREATOR>$(BaseOutputPath.TrimEnd('\'))\$(Configuration)\net9.0\MetadataCreator.dll</METADATA_CREATOR>
   </PropertyGroup>
   
   <ItemGroup Condition="$(IsJotunnProject) == true and '$(AssemblyName)' != 'MetadataCreator'">
-    <PackageReference Include="JotunnLib" Version="2.24.3" />
+    <PackageReference Include="JotunnLib" Version="2.26.0" />
   </ItemGroup>
     
   <ItemGroup Condition="$(IsJotunnProject) != true">
-    <PackageReference Include="JotunnLib" Version="2.24.3" PrivateAssets="all" />
+    <PackageReference Include="JotunnLib" Version="2.26.0" PrivateAssets="all" />
   </ItemGroup>
   
   <ItemGroup>

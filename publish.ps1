@@ -52,6 +52,13 @@ if ($Target.Equals("Debug")) {
     Copy-Item -Path "$TargetPath\$name.dll" -Destination "$plug" -Force
     Copy-Item -Path "$TargetPath\$name.pdb" -Destination "$plug" -Force
     Copy-Item -Path "$TargetPath\$name.dll.mdb" -Destination "$plug" -Force
+    
+    # Copy Package contents (models, configs, etc.)
+    $PackagePath = "$ProjectPath\Package"
+    if (Test-Path -Path "$PackagePath") {
+        Write-Host "Copy Package contents to $plug"
+        Copy-Item -Path "$PackagePath\*" -Destination "$plug" -Recurse -Force
+    }
 }
 
 if($Target.Equals("Release")) {

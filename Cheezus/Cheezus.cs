@@ -12,7 +12,7 @@ namespace Cheezus {
     public const string PluginName = "Cheezus";
     public const string PluginVersion = "1.0.0";
     public const string PluginDescription = "Much needed wheel of cheese";
-    public const string PluginDependencies = "denikson-BepInExPack_Valheim-5.4.2202, ValheimModding-Jotunn-2.24.3"; // Comma separated string of dependencies
+    public const string PluginDependencies = "denikson-BepInExPack_Valheim-5.4.2332, ValheimModding-Jotunn-2.26.0";// Comma separated string of dependencies
   }
 
   [BepInPlugin(PluginInfo.PluginGUID, PluginInfo.PluginName, PluginInfo.PluginVersion)]

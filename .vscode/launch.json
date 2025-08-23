@@ -9,49 +9,91 @@
             "type": "PowerShell",
             "request": "launch",
             "script": "dotnet build Omnivore.sln --configuration Debug",
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal"
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Build LlamaVillagers Debug",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "dotnet build LlamaVillagers/LlamaVillagers.csproj --configuration Debug",
+            "cwd": "${workspaceFolder}"
         },
         {
             "name": "Build Release",
             "type": "PowerShell",
             "request": "launch",
             "script": "dotnet build Omnivore.sln --configuration Release",
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal"
+            "cwd": "${workspaceFolder}"
         },
         {
             "name": "Clean Solution",
             "type": "PowerShell",
             "request": "launch",
             "script": "dotnet clean Omnivore.sln",
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal"
+            "cwd": "${workspaceFolder}"
         },
         {
             "name": "Deploy Cheezus Debug",
             "type": "PowerShell",
             "request": "launch",
             "script": "powershell.exe -ExecutionPolicy RemoteSigned -File publish.ps1 -Target Debug -TargetPath 'BuildOutput\\Debug\\net48' -TargetAssembly 'Cheezus.dll' -ValheimPath 'C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim' -DeployPath 'D:\\Games\\ThunderstoreData\\Valheim\\profiles\\Development\\BepInEx\\plugins' -ProjectPath 'Cheezus'",
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal"
+            "cwd": "${workspaceFolder}"
         },
         {
             "name": "Deploy LlamaVillagers Debug",
             "type": "PowerShell",
             "request": "launch",
             "script": "powershell.exe -ExecutionPolicy RemoteSigned -File publish.ps1 -Target Debug -TargetPath 'BuildOutput\\Debug\\net48' -TargetAssembly 'LlamaVillagers.dll' -ValheimPath 'C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim' -DeployPath 'D:\\Games\\ThunderstoreData\\Valheim\\profiles\\Development\\BepInEx\\plugins' -ProjectPath 'LlamaVillagers'",
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal"
+            "cwd": "${workspaceFolder}"
         },
         {
             "name": "Deploy SleepWell Debug",
             "type": "PowerShell",
             "request": "launch",
             "script": "powershell.exe -ExecutionPolicy RemoteSigned -File publish.ps1 -Target Debug -TargetPath 'BuildOutput\\Debug\\net48' -TargetAssembly 'SleepWell.dll' -ValheimPath 'C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim' -DeployPath 'D:\\Games\\ThunderstoreData\\Valheim\\profiles\\Development\\BepInEx\\plugins' -ProjectPath 'SleepWell'",
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal"
+            "cwd": "${workspaceFolder}"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "DEBUG: Build and Deploy Cheezus",
+            "configurations": ["Build Debug", "Deploy Cheezus Debug"],
+            "stopAll": true,
+            "presentation": {
+                "hidden": false,
+                "group": "Build and Deploy",
+                "order": 1
+            }
         },
-
+        {
+            "name": "DEBUG: Build and Deploy LlamaVillagers",
+            "configurations": ["Build Debug", "Deploy LlamaVillagers Debug"],
+            "stopAll": true,
+            "presentation": {
+                "hidden": false,
+                "group": "Build and Deploy",
+                "order": 2
+            }
+        },
+        {
+            "name": "DEBUG: Build and Deploy SleepWell",
+            "configurations": ["Build Debug", "Deploy SleepWell Debug"],
+            "stopAll": true,
+            "presentation": {
+                "hidden": false,
+                "group": "Build and Deploy",
+                "order": 3
+            }
+        },
+        {
+            "name": "DEBUG: Build and Deploy All",
+            "configurations": ["Build Debug", "Deploy Cheezus Debug", "Deploy LlamaVillagers Debug", "Deploy SleepWell Debug"],
+            "stopAll": true,
+            "presentation": {
+                "hidden": false,
+                "group": "Build and Deploy",
+                "order": 4
+            }
+        }
     ]
 }

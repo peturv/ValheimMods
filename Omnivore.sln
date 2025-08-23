@@ -33,6 +33,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheezus", "Cheezus\Cheezus.
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetadataCreator", "MetadataCreator\MetadataCreator.csproj", "{E9E58267-4A06-4FDF-9FEB-432159B749A0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8A67F20A-80A3-4F9F-853F-EF9E2109D409} = {8A67F20A-80A3-4F9F-853F-EF9E2109D409}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmnivoreCommon", "OmnivoreCommon\OmnivoreCommon.csproj", "{8A67F20A-80A3-4F9F-853F-EF9E2109D409}"
 EndProject
